@@ -1,13 +1,42 @@
-# EzSkiROS
+# EzSkiROS Docker container
 
 This repository documents an embedded Domain-specific language (DSL) to describe robotic skills in SkiROS. It allows robot developers to catch bugs in the SkillDescription at launch time (before running the robot).
 
-## Replication Package for User Study
+## Supported architectures
 
-To evaluate the effectiveness and usability of the EzSkiROS, we conducted a user evaluation with robotics experts. In this repository, we document the artifacts generated in the User Study for the sake of verifiability and replicability. The User study consisted in (1) presentating a video where we explain EzSkiROS and additions to SkiROS followed by a Zoom discussion session with one of the authors, and (2) filling an online form with a mix of likert scale and open ended questions. Links for the video and the form are in the following:
+The ```ezskiros-demo``` pre-built image supports **linux/x86** architecture.
 
- 1. [Link for the video in Youtube](https://youtu.be/qqitzqNhFXM)
- 2. [Link for the form in Google Forms](https://docs.google.com/forms/d/1wlu3y9TaDsWhzFRVV1jlafQWG7wjHPoaJtk1jnRCBzA/printform)
+## Loading the Docker image
+
+First, load the docker image to create the container
+```
+docker load < ezskiros-demo.tar.gz
+```
+
+then run the container using the command ```./run-demo.sh```. 
+
+##  In the Docker image: set up ROS  
+   Assuming that your shell is `bash`: within the Docker image, run
+```
+source /opt/ros/noetic/setup.bash
+```
+
+### Catkin workspace
+Catkin workspace has already set up. Go to the ```catkin_ws```:
+
+```
+cd home/ezskiros/catkin_ws/
+```
+To set up the environment, run:
+
+```source devel/setup.bash```
+
+## Integration test : Running SkiROS (Validation
+
+Run:
+```roscore &``` and press enter
+Then run:
+```mon launch heron_launch simulation.launch ```
 
 ### Contributors
 
