@@ -2,6 +2,10 @@
 
 This repository documents an embedded Domain-specific language (DSL) to describe robotic skills in SkiROS. It allows robot developers to catch bugs in the SkillDescription at launch time (before running the robot).
 
+## EzSkiROS Docker Container
+
+Our implementation of EzSkiROS can be accessed at [https://hub.docker.com/r/rdinizcal/ezskiros/tags](https://hub.docker.com/r/rdinizcal/ezskiros/tags). 
+
 ## Replication Package for User Study
 
 To evaluate the effectiveness and usability of the EzSkiROS, we conducted a user evaluation with robotics experts. In this repository, we document the artifacts generated in the User Study for the sake of verifiability and replicability. The User study consisted in (1) presentating a video where we explain EzSkiROS and additions to SkiROS followed by a Zoom discussion session with one of the authors, and (2) filling an online form with a mix of likert scale and open ended questions. Links for the video and the form are in the following:
