@@ -53,15 +53,17 @@ Run ```roscore &``` and press enter
 
 Then, run ```mon launch heron_launch simulation.launch ```
 
-A simulation of Heron, our robot, should appear on your screen.
+A simulation of Heron, our robot, should appear on your screen with the SkiROS GUI loading all the skills. You can run ```mir_drive``` skill (a skill written in EzSkiROS) by setting the goal location on the right hand side of the GUI. 
 
 ## Run Automated Tests
 
-[Work in progress..]
+To run unit tests with EzSkiROS, you can run the script:
+```catkin test ezskiros skills_sandbox```
+and all tests should pass.
 
 ## Inspect the Code
 
-[Work in progress..]
+To check early bug detection, you can introduce a wrong relation for ```hasA``` in the ```home/ezskiros/catkin_ws/src/skills/skills_sandbox/arm_motion/pick_place_descriptions``` and then launch the simulation as described above and you can observe a TypeError at launch time.
 
 ### Contributors
 
