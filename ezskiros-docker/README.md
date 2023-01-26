@@ -1,46 +1,71 @@
-# EzSkiROS Docker container
+# EzSkiROS for People in a Hurry (Docker container)
 
-This repository documents an embedded Domain-specific language (DSL) to describe robotic skills in SkiROS. It allows robot developers to catch bugs in the SkillDescription at launch time (before running the robot).
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/rdinizcal/ezskiros?label=docker%20&style=plastic)
 
-## Supported architectures
+This section guides you how to get EzSkiROS running in your environment in less than 5 minutes. In the container you can:
+ - [run simulations](#run-simulations) of robots and replicate our experiments to catch bugs early
+ - read, write, and run [automated tests](#run-automated-tests) for skill descriptions
+ - [inspect EzSkiROS's code](#inspect-the-code) to understand how we implemented the robotic patterns in practice
 
-The ```ezskiros-demo``` pre-built image supports **linux/x86** architecture.
+## Requirements
+
+- ```ezskiros-demo``` is a pre-built image supporting the **linux/x86** architecture
+- Install [Docker](https://www.docker.com/)
 
 ## Loading the Docker image
 
-First, load the docker image to create the container
+First, pull the docker image to create the container:
 ```
-docker load < ezskiros-demo.tar.gz
+docker pull rdinizcal/ezskiros:demo
 ```
 
-then run the container using the command ```./run-demo.sh```. 
+Then, run the container using the command:
+```
+sudo docker run -v /dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e TERM -e DISPLAY --ipc=host --net=host -v $XAUTHORITY:$XAUTHORITY -e XAUTHORITY -v "$(readlink -f ./shared):/shared" --name ezskiros -it rdinizcal/ezskiros:demo
+```
 
-##  In the Docker image: set up ROS  
-   Assuming that your shell is `bash`: within the Docker image, run
+If the image is running correctly, your terminal should look like ```ezskiros@[workplace]``` indicating that you are inside the docker image.
+
+## Environment setup
+
+### ROS setup
+ 
+Assuming that your shell is `bash`, run:
 ```
 source /opt/ros/noetic/setup.bash
 ```
 
-### Catkin workspace
-Catkin workspace has already set up. Go to the ```catkin_ws```:
+### Catkin workspace setup
 
+Catkin workspace has already set up. Go to the ```catkin_ws```:
 ```
 cd home/ezskiros/catkin_ws/
 ```
-To set up the environment, run:
 
+To set up the environment, run:
 ```source devel/setup.bash```
 
-## Integration test : Running SkiROS (Validation
+## Run Simulations
 
-Run:
-```roscore &``` and press enter
-Then run:
-```mon launch heron_launch simulation.launch ```
+Assuming that the [Environment setup](#environment-setup) was carried out.
+
+Run ```roscore &``` and press enter
+
+Then, run ```mon launch heron_launch simulation.launch ```
+
+A simulation of Heron, our robot, should appear on your screen.
+
+## Run Automated Tests
+
+[Work in progress..]
+
+## Inspect the Code
+
+[Work in progress..]
 
 ### Contributors
 
-Momina Rizwan<sup>1</sup>, Ricardo Caldas<sup>2</sup>, Christoph Reichenbach<sup>1</sup>, Matthias Mayr<sup>1</sup>  
+Momina Rizwan<sup>1</sup>, [Ricardo Caldas](https://rdinizcal.github.io)<sup>2</sup>, Christoph Reichenbach<sup>1</sup>, Matthias Mayr<sup>1</sup>  
 
 <sup>1</sup> Department of Computer Science, Faculty of Engineering (LTH), Lund University <br>
 <sup>2</sup> Department of Computer Science and Engineering, Chalmers University of Technology
